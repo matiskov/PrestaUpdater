@@ -40,3 +40,24 @@ C:\Users\matiskov\source\repos\cozabuty_data_updater\cozabuty_data_updater\obj\D
 C:\Users\matiskov\source\repos\cozabuty_data_updater\cozabuty_data_updater\obj\Debug\cozabuty_data_updater.csproj.CopyComplete
 C:\Users\matiskov\source\repos\cozabuty_data_updater\cozabuty_data_updater\obj\Debug\cozabuty_data_updater.exe
 C:\Users\matiskov\source\repos\cozabuty_data_updater\cozabuty_data_updater\obj\Debug\cozabuty_data_updater.pdb
+C:\Users\user\Desktop\Nowy folder (3)\PrestaUpdater\cozabuty_data_updater\bin\Debug\cozabuty_data_updater.exe.config
+C:\Users\user\Desktop\Nowy folder (3)\PrestaUpdater\cozabuty_data_updater\bin\Debug\cozabuty_data_updater.exe
+C:\Users\user\Desktop\Nowy folder (3)\PrestaUpdater\cozabuty_data_updater\bin\Debug\cozabuty_data_updater.pdb
+C:\Users\user\Desktop\Nowy folder (3)\PrestaUpdater\cozabuty_data_updater\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\user\Desktop\Nowy folder (3)\PrestaUpdater\cozabuty_data_updater\bin\Debug\EPPlus.dll
+C:\Users\user\Desktop\Nowy folder (3)\PrestaUpdater\cozabuty_data_updater\bin\Debug\Google.Protobuf.dll
+C:\Users\user\Desktop\Nowy folder (3)\PrestaUpdater\cozabuty_data_updater\bin\Debug\MySql.Data.dll
+C:\Users\user\Desktop\Nowy folder (3)\PrestaUpdater\cozabuty_data_updater\bin\Debug\Renci.SshNet.dll
+C:\Users\user\Desktop\Nowy folder (3)\PrestaUpdater\cozabuty_data_updater\bin\Debug\Ubiety.Dns.Core.dll
+C:\Users\user\Desktop\Nowy folder (3)\PrestaUpdater\cozabuty_data_updater\bin\Debug\EPPlus.xml
+C:\Users\user\Desktop\Nowy folder (3)\PrestaUpdater\cozabuty_data_updater\bin\Debug\Google.Protobuf.xml
+C:\Users\user\Desktop\Nowy folder (3)\PrestaUpdater\cozabuty_data_updater\bin\Debug\MySql.Data.xml
+C:\Users\user\Desktop\Nowy folder (3)\PrestaUpdater\cozabuty_data_updater\bin\Debug\Renci.SshNet.xml
+C:\Users\user\Desktop\Nowy folder (3)\PrestaUpdater\cozabuty_data_updater\obj\Debug\cozabuty_data_updater.csprojAssemblyReference.cache
+C:\Users\user\Desktop\Nowy folder (3)\PrestaUpdater\cozabuty_data_updater\obj\Debug\cozabuty_data_updater.Form1.resources
+C:\Users\user\Desktop\Nowy folder (3)\PrestaUpdater\cozabuty_data_updater\obj\Debug\cozabuty_data_updater.Form2.resources
+C:\Users\user\Desktop\Nowy folder (3)\PrestaUpdater\cozabuty_data_updater\obj\Debug\cozabuty_data_updater.Properties.Resources.resources
+C:\Users\user\Desktop\Nowy folder (3)\PrestaUpdater\cozabuty_data_updater\obj\Debug\cozabuty_data_updater.csproj.GenerateResource.cache
+C:\Users\user\Desktop\Nowy folder (3)\PrestaUpdater\cozabuty_data_updater\obj\Debug\cozabuty_data_updater.csproj.CopyComplete
+C:\Users\user\Desktop\Nowy folder (3)\PrestaUpdater\cozabuty_data_updater\obj\Debug\cozabuty_data_updater.exe
+C:\Users\user\Desktop\Nowy folder (3)\PrestaUpdater\cozabuty_data_updater\obj\Debug\cozabuty_data_updater.pdb

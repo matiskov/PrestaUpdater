@@ -33,7 +33,7 @@ namespace cozabuty_data_updater
 				openFileDialog.Multiselect = false;
 				openFileDialog.ShowDialog();
 				ConnectDB nowe = new ConnectDB();
-				
+
 				nowe.OpenConnection();
 				MySqlCommand mySqlCommand = new MySqlCommand();
 				mySqlCommand.Connection = nowe.conn;
@@ -88,10 +88,12 @@ namespace cozabuty_data_updater
 					nowe.CloseConnection();
 				}
 			}
-			catch (Exception ex) {
+			catch (Exception ex)
+			{
 				MessageBox.Show(ex.Message);
 			}
-			finally{
+			finally
+			{
 				progressBar1.MarqueeAnimationSpeed = 0;
 				MessageBox.Show("Zakończono operację");
 			}
@@ -104,12 +106,15 @@ namespace cozabuty_data_updater
 
 		private void button3_Click(object sender, EventArgs e)
 		{
-			try {
+			try
+			{
 				progressBar1.MarqueeAnimationSpeed = 100;
-				if (comboBox1.SelectedItem == null) {
+				if (comboBox1.SelectedItem == null)
+				{
 					MessageBox.Show("Nie wybrano żadnego sklepu, plik nie zostanie pobrany");
 				}
-				else {
+				else
+				{
 					SaveFileDialog saveFileDialog = new SaveFileDialog();
 					saveFileDialog.Filter = "Pliki excela (*.xlsx)|*.xlsx";
 					saveFileDialog.FilterIndex = 0;
@@ -180,7 +185,8 @@ namespace cozabuty_data_updater
 						string[,] products_priories = new string[proSize + 1000, 3000];
 						MySqlDataReader read = mySqlCommand.ExecuteReader();
 
-						while (read.Read()) {
+						while (read.Read())
+						{
 							int.TryParse(read[0].ToString(), out int cat);
 							int.TryParse(read[1].ToString(), out int pro);
 							products_priories[pro, cat] = read[2].ToString();
@@ -197,7 +203,8 @@ namespace cozabuty_data_updater
 						MySqlDataReader downInfo = featuresSel.ExecuteReader();
 
 
-						while (downInfo.Read()) {
+						while (downInfo.Read())
+						{
 							int.TryParse(downInfo[0].ToString(), out int feat);
 							int.TryParse(downInfo[1].ToString(), out int prod);
 							feature[feat] = downInfo[3].ToString();
@@ -218,8 +225,8 @@ namespace cozabuty_data_updater
 						prices.CommandText = "SELECT id_product, price, reduction FROM ps_specific_price group by id_product";
 						prestaDB4.OpenConnection();
 						MySqlDataReader pricesd = prices.ExecuteReader();
-						float[] cenki = new float[proSize+1000];
-						float[] promki = new float[proSize+1000];
+						float[] cenki = new float[proSize + 1000];
+						float[] promki = new float[proSize + 1000];
 						while (pricesd.Read())
 						{
 							int.TryParse(pricesd[0].ToString(), out int id_product);
@@ -237,13 +244,13 @@ namespace cozabuty_data_updater
 						prestaDB5.OpenConnection();
 						MySqlDataReader catdefault = catdef.ExecuteReader();
 						int[] catdefaulttab = new int[proSize + 1000];
-						
+
 
 						while (catdefault.Read())
 						{
 							int.TryParse(catdefault[0].ToString(), out int id_product);
 							int.TryParse(catdefault[1].ToString(), out int cat);
-							
+
 							catdefaulttab[id_product] = cat;
 						}
 
@@ -256,7 +263,8 @@ namespace cozabuty_data_updater
 						productsC.CommandText = towary;
 						MySqlDataReader dataReader = productsC.ExecuteReader();
 
-						while (dataReader.Read()) {
+						while (dataReader.Read())
+						{
 
 							Produkty.Add(new Products(dataReader[0].ToString(), dataReader[1].ToString(), dataReader[2].ToString(), dataReader[3].ToString(), dataReader[4].ToString(), dataReader[5].ToString(), dataReader[6].ToString(), dataReader[7].ToString(), dataReader[9].ToString()));
 						}
@@ -296,7 +304,7 @@ namespace cozabuty_data_updater
 									worksheet2.Cells[2, z].Value = "Buty damskie";
 
 								}
-								else if (index < 196  )
+								else if (index < 196)
 								{
 									worksheet.Cells[2, z].Value = "Wyprzedaz";
 									worksheet.Cells[3, z].Value = tabsa[index];
@@ -442,22 +450,24 @@ namespace cozabuty_data_updater
 							worksheet2.Cells[4, 13].Value = "Ilość";
 							worksheet2.Cells[4, 14].Value = "Do zagospodarowania";
 							//MessageBox.Show(kategorie.Count.ToString());
-							foreach (Products a in Produkty) {
+							foreach (Products a in Produkty)
+							{
 								int y = 16;
 								int.TryParse(a.GetID(), out int id_prod);
-								while (worksheet.Cells[1, y].Value != null) {
+								while (worksheet.Cells[1, y].Value != null)
+								{
 									int.TryParse(worksheet.Cells[1, y].Value.ToString(), out int result);
 									if (products_priories[id_prod, result] != null)
 									{
 
-										worksheet.Cells[x, y].Value = products_priories[id_prod, result];
-										worksheet2.Cells[x, y].Value = 1;
+										worksheet.Cells[x, y].Value = int.Parse(products_priories[id_prod, result]);
+										worksheet2.Cells[x, y].Value = (int)1;
 
 									}
 									y++;
 								}
 								progressBar1.Refresh();
-								worksheet.Cells[x, 1].Value = a.GetID();
+								worksheet.Cells[x, 1].Value = int.Parse(a.GetID());
 								worksheet.Cells[x, 2].Value = a.GetName();
 								if (catdefaulttab[id_prod] < 121)
 								{
@@ -492,7 +502,8 @@ namespace cozabuty_data_updater
 									worksheet.Cells[x, 3].Value = "Kategoria tymczasowa";
 									worksheet2.Cells[x, 3].Value = "Kategoria tymczasowa";
 								}
-								else {
+								else
+								{
 									worksheet.Cells[x, 3].Value = tabsa[catdefaulttab[id_prod]];
 									worksheet2.Cells[x, 3].Value = tabsa[catdefaulttab[id_prod]];
 								}
@@ -501,7 +512,8 @@ namespace cozabuty_data_updater
 									worksheet.Cells[x, 4].Value = Math.Round(1.23 * cenki[id_prod] * (1 - promki[id_prod]), 2);
 									worksheet.Cells[x, 5].Value = Math.Round(1.23 * cenki[id_prod], 2);
 								}
-								else {
+								else
+								{
 									float.TryParse(a.GetPrice(), out float pricee);
 									worksheet.Cells[x, 4].Value = Math.Round(1.23 * pricee, 2);
 									worksheet.Cells[x, 5].Value = Math.Round(1.23 * pricee, 2);
@@ -513,10 +525,10 @@ namespace cozabuty_data_updater
 								worksheet.Cells[x, 10].Value = products[id_prod, 10];
 								worksheet.Cells[x, 11].Value = products[id_prod, 15];
 								worksheet.Cells[x, 12].Value = products[id_prod, 20];
-								worksheet.Cells[x, 13].Value = a.GetStany();
-								worksheet2.Cells[x, 1].Value = a.GetID();
+								worksheet.Cells[x, 13].Value = int.Parse(a.GetStany());
+								worksheet2.Cells[x, 1].Value = int.Parse(a.GetID());
 								worksheet2.Cells[x, 2].Value = a.GetName();
-								
+
 								if (cenki[id_prod] != 0)
 								{
 									worksheet2.Cells[x, 4].Value = Math.Round(1.23 * cenki[id_prod] * (1 - promki[id_prod]), 2);
@@ -535,7 +547,7 @@ namespace cozabuty_data_updater
 								worksheet2.Cells[x, 10].Value = products[id_prod, 10];
 								worksheet2.Cells[x, 11].Value = products[id_prod, 15];
 								worksheet2.Cells[x, 12].Value = products[id_prod, 20];
-								worksheet2.Cells[x, 13].Value = a.GetStany();
+								worksheet2.Cells[x, 13].Value = int.Parse(a.GetStany());
 								//worksheet.Cells[x, 14].Value = "Do zagospodarowania";
 								x++;
 							}
@@ -559,7 +571,8 @@ namespace cozabuty_data_updater
 
 				}
 			}
-			catch (Exception ex) {
+			catch (Exception ex)
+			{
 				MessageBox.Show(ex.Message);
 				MessageBox.Show("Zakończono operację");
 			}
@@ -580,7 +593,7 @@ namespace cozabuty_data_updater
 				openFileDialog.FilterIndex = 1;
 				openFileDialog.Multiselect = false;
 				openFileDialog.ShowDialog();
-				
+
 				if (openFileDialog.FileName == "")
 				{
 					MessageBox.Show("Nie wybrano pliku lub podano nieprawidłową nazwę");
@@ -618,7 +631,7 @@ namespace cozabuty_data_updater
 									}
 									if (priorytet == 1)
 									{
-										update = "INSERT INTO ps_category_product(id_category, id_product, position) VALUES(" + wymiar2 + "," + wymiar1 + ",10000)";
+										update = "INSERT INTO ps_category_product(id_category, id_product, position) VALUES(" + wymiar2 + "," + wymiar1 + ",10001)";
 									}
 									mySqlCommand.CommandText = update;
 
@@ -632,7 +645,7 @@ namespace cozabuty_data_updater
 									}
 
 								}
-								
+
 
 							}
 						}
@@ -663,7 +676,8 @@ namespace cozabuty_data_updater
 				saveFileDialog.CreatePrompt = true;
 				saveFileDialog.Title = "Zapisz plik jako";
 				saveFileDialog.ShowDialog();
-				if (saveFileDialog.FileName == "") {
+				if (saveFileDialog.FileName == "")
+				{
 					throw new Exception("Nie wybrano pliku");
 				}
 				ConnectDB prestaDB2 = new ConnectDB();
@@ -749,7 +763,7 @@ namespace cozabuty_data_updater
 					int col = 4;
 					for (int j = 0; j <= featSize + 1; j++)
 					{
-						
+
 						if (feature[j] != "")
 						{
 							worksheet.Cells[1, col].Value = j;
@@ -760,27 +774,28 @@ namespace cozabuty_data_updater
 
 					}
 					int row = 3;
-					
-					for (int i = 0; i<= proSize+1; i++) {
+
+					for (int i = 0; i <= proSize + 1; i++)
+					{
 						int col2 = 4;
 						progressBar1.Refresh();
 						if (nazwy_produktow[i] != null)
 						{
-							for (int j = 0; j<= featSize+1; j++)
+							for (int j = 0; j <= featSize + 1; j++)
 							{
-							
+
 								worksheet.Cells[row, 1].Value = i;
 								worksheet.Cells[row, 2].Value = nazwy_produktow[i];
 								worksheet.Cells[row, 3].Value = stany[i];
 								worksheet.Cells[row, col2].Value = products[i, j];
 								col2++;
-								
-							
-						}
+
+
+							}
 							progressBar1.Refresh();
 							row++;
 						}
-						
+
 					}
 
 					FileInfo excelFile = new FileInfo(saveFileDialog.FileName);
@@ -827,16 +842,17 @@ namespace cozabuty_data_updater
 					sqlCommand.CommandText = "SELECT id_feature_value, value FROM ps_feature_value_lang WHERE id_lang=1";
 					MySqlDataReader reader = sqlCommand.ExecuteReader();
 					string[] id_param = new string[50000];
-					while (reader.Read()) {
+					while (reader.Read())
+					{
 						int.TryParse(reader[0].ToString(), out int ind);
 						id_param[ind] = reader[1].ToString();
-					
+
 					}
 
 
 					FileInfo file = new FileInfo(@openFileDialog.FileName);
 					ExcelPackage package = new ExcelPackage(file);
-					ExcelWorksheet worksheet = package.Workbook.Worksheets[1];
+					ExcelWorksheet worksheet = package.Workbook.Worksheets["Parametry"];
 					int rows = worksheet.Dimension.Rows;
 					int columns = worksheet.Dimension.Columns;
 					ConnectDB nowe2 = new ConnectDB();
@@ -846,7 +862,7 @@ namespace cozabuty_data_updater
 					for (int i = 3; i <= rows; i++)
 					{
 						progressBar1.Refresh();
-						for (int j = 4; j <= columns; j++)
+						for (int j = 5; j <= columns; j++)
 						{
 							if (worksheet.Cells[i, j].Value != null)
 							{
@@ -854,20 +870,46 @@ namespace cozabuty_data_updater
 								int.TryParse(worksheet.Cells[1, j].Value.ToString(), out int wymiar2);
 								int id_para = 0;
 								string content = worksheet.Cells[i, j].Value.ToString();
-								for (int h = 0; h < id_param.Length; h++) { 
-									if (content == id_param[h])
+								if (wymiar2 == 20)
+								{
+									for (int h = 1150; h < id_param.Length; h++)
 									{
-										id_para = h;
-										break;
+										if (content == id_param[h])
+										{
+											id_para = h;
+											break;
+										}
+									}
+								}
+								else if (wymiar2 == 16) {
+									for (int h = 1131; h < id_param.Length; h++)
+									{
+										if (content == id_param[h])
+										{
+											id_para = h;
+											break;
+										}
+									}
+								}
+								else
+								{
+									for (int h = 0; h < id_param.Length; h++)
+									{
+										if (content == id_param[h])
+										{
+											id_para = h;
+											break;
+										}
 									}
 								}
 								string update = "";
-								if (comboBox1.SelectedItem.ToString() == "Papier") {
+								if (comboBox1.SelectedItem.ToString() == "Papier")
+								{
 									update = "INSERT INTO ps_feature_product(id_feature_value,id_feature,id_product) VALUES (" + id_para + "," + wymiar2 + "," + wymiar1 + ")";
 								}
 								else
 								{
-									update = "UPDATE ps_feature_product SET id_feature_value =" + id_para + " WHERE id_feature =" + wymiar2 + " and id_product =" + wymiar1;
+									update = "UPDATE ps_feature_product SET id_feature_value = " + id_para + " WHERE id_feature = " + wymiar2 + " and id_product = " + wymiar1;
 								}
 								//MessageBox.Show(update);
 								mySqlCommand.CommandText = update;
@@ -879,7 +921,7 @@ namespace cozabuty_data_updater
 								catch (MySqlException ex)
 								{
 
-									MessageBox.Show(ex.Message.ToString());
+									ex.Message.ToString();
 								}
 							}
 						}
@@ -926,18 +968,19 @@ namespace cozabuty_data_updater
 						mySql.CommandText = "select * from wymiary";
 						MySqlDataReader reader = mySql.ExecuteReader();
 						List<wymiary> produkty = new List<wymiary>();
-						while (reader.Read()) {
-							produkty.Add(new wymiary(reader[1].ToString(),reader[0].ToString(), reader[5].ToString(), reader[3].ToString(), reader[2].ToString(), reader[4].ToString()));
+						while (reader.Read())
+						{
+							produkty.Add(new wymiary(reader[1].ToString(), reader[0].ToString(), reader[5].ToString(), reader[3].ToString(), reader[2].ToString(), reader[4].ToString()));
 						}
 						connect.CloseConnection();
 
 						using (ExcelPackage excel = new ExcelPackage())
 						{
 							excel.Workbook.Worksheets.Add("Grupy towarów i wagi");
-							
+
 							var worksheet = excel.Workbook.Worksheets["Grupy towarów i wagi"];
-							
-							
+
+
 							worksheet.Cells[1, 1].Value = "Id produktu";
 							worksheet.Cells[1, 2].Value = "Nazwa produktu";
 							worksheet.Cells[1, 3].Value = "Id grupy";
@@ -947,7 +990,8 @@ namespace cozabuty_data_updater
 							worksheet.Cells[1, 7].Value = "Waga";
 
 							int i = 2;
-							foreach (wymiary s in produkty) {
+							foreach (wymiary s in produkty)
+							{
 								progressBar1.Refresh();
 								worksheet.Cells[i, 1].Value = s.GetID();
 								worksheet.Cells[i, 2].Value = s.GetName();
@@ -1019,21 +1063,204 @@ namespace cozabuty_data_updater
 					{
 						progressBar1.Refresh();
 						if (worksheet.Cells[i, 1].Value != null)
+						{
+							for (int j = 2; j < rows; j++)
 							{
-							for (int j = i + 1; j < rows; j++)
-							{
-								
+
 								int.TryParse(worksheet.Cells[i, 1].Value.ToString(), out int id_prod);
 								int.TryParse(worksheet.Cells[j, 1].Value.ToString(), out int id_prod_2);
 								string id_grupy = worksheet.Cells[i, 3].Value.ToString();
 								string id_grupy_next = worksheet.Cells[j, 3].Value.ToString();
-								
+
 								string insert = "SELECT * FROM ps_alias";
+								string select = "SELECT * FROM ps_accessory";
 								if (id_grupy == id_grupy_next)
 								{
 									insert = "INSERT INTO ps_accessory(id_product_1, id_product_2) VALUES(" + id_prod + ", " + id_prod_2 + ")";
+									select = "SELECT * from ps_accessory WHERE id_product_1 = " + id_prod + " and id_product_2 = " + id_prod_2;
 								}
+								mySqlCommand.CommandText = select;
+								MySqlDataReader reader = mySqlCommand.ExecuteReader();
+								bool result = false;
+								if (reader.Read()) {
+									result = true;
+									//MessageBox.Show(reader[0].ToString());
+								}
+								reader.Close();
+								try
+								{
+									if (result == false)
+								{
+										//MessageBox.Show("Dodaję...");
+										mySqlCommand.CommandText = insert;
+										progressBar1.Refresh();
+										mySqlCommand.ExecuteNonQuery();
+									}
+									
+								}
+								catch (MySqlException ex)
+								{
 
+									MessageBox.Show(ex.Message.ToString());
+								}
+							}
+						}
+
+					}
+					nowe2.CloseConnection();
+				}
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message);
+			}
+			finally
+			{
+				progressBar1.MarqueeAnimationSpeed = 0;
+				MessageBox.Show("Zakończono operację");
+			}
+		}
+
+		private void button9_Click(object sender, EventArgs e)
+		{
+			try
+			{
+				progressBar1.MarqueeAnimationSpeed = 100;
+				OpenFileDialog openFileDialog = new OpenFileDialog();
+				openFileDialog.Filter = "Pliki excel (.xlsx)|*.xlsx|Wszystkie pliki (*.*)|*.*";
+				openFileDialog.FilterIndex = 1;
+				openFileDialog.Multiselect = false;
+				openFileDialog.ShowDialog();
+
+				if (openFileDialog.FileName == "")
+				{
+					MessageBox.Show("Nie wybrano pliku lub podano nieprawidłową nazwę");
+
+				}
+
+				else
+				{
+
+					FileInfo file = new FileInfo(@openFileDialog.FileName);
+					ExcelPackage package = new ExcelPackage(file);
+					ExcelWorksheet worksheet = package.Workbook.Worksheets[1];
+					int rows = worksheet.Dimension.Rows;
+					int columns = worksheet.Dimension.Columns;
+					ConnectDB nowe2 = new ConnectDB();
+					nowe2.OpenConnection();
+					MySqlCommand mySqlCommand = new MySqlCommand();
+					mySqlCommand.Connection = nowe2.conn;
+					for (int i = 2; i <= rows; i++)
+					{
+						progressBar1.Refresh();
+						if (worksheet.Cells[i, 1].Value != null)
+						{
+							for (int j = 2; j < columns; j++)
+							{
+
+								int id_conversion_group = 0;
+								int id_conversion_chart = 0;
+								if (j <= 23)
+								{
+									id_conversion_group = 10 + i;
+									id_conversion_chart = 8 + i;
+									string inserti = "INSERT Into ps_conversion_groups(name, id_conversion_chart) VALUES (" + "Długość wkładki w której mieści się stopa średniej tęgości (cm)" + "," + id_conversion_chart + ")";
+									mySqlCommand.CommandText = inserti;
+									progressBar1.Refresh();
+									try
+									{
+										mySqlCommand.ExecuteNonQuery();
+									}
+									catch (MySqlException ex)
+									{
+
+										ex.Message.ToString();
+									}
+								}
+								else if (j < 32)
+								{
+									id_conversion_group = 11 + i;
+									id_conversion_chart = 8 + i;
+									string inserti = "INSERT Into ps_conversion_groups(name, id_conversion_chart) VALUES (" + "Obwód cholewki (cm)" + "," + id_conversion_chart + ")";
+									mySqlCommand.CommandText = inserti;
+									progressBar1.Refresh();
+									try
+									{
+										mySqlCommand.ExecuteNonQuery();
+									}
+									catch (MySqlException ex)
+									{
+
+										ex.Message.ToString();
+									}
+								}
+								else if (j < 39)
+								{
+									id_conversion_group = 12 + i;
+									id_conversion_chart = 8 + i;
+									string inserti = "INSERT Into ps_conversion_groups(name, id_conversion_chart) VALUES (" + "Wysokość cholewki (cm)" + "," + id_conversion_chart + ")";
+									mySqlCommand.CommandText = inserti;
+									progressBar1.Refresh();
+									try
+									{
+										mySqlCommand.ExecuteNonQuery();
+									}
+									catch (MySqlException ex)
+									{
+
+										ex.Message.ToString();
+									}
+								}
+								else if (j < 58)
+								{
+									id_conversion_group = 13 + i;
+									id_conversion_chart = 8 + i;
+									string inserti = "INSERT Into ps_conversion_groups(name, id_conversion_chart) VALUES (" + "Zmierzona długość wkładki wewnątrz buta (cm)" + "," + id_conversion_chart + ")";
+									mySqlCommand.CommandText = inserti;
+									progressBar1.Refresh();
+									try
+									{
+										mySqlCommand.ExecuteNonQuery();
+									}
+									catch (MySqlException ex)
+									{
+
+										ex.Message.ToString();
+									}
+								}
+								int.TryParse(worksheet.Cells[2, j].Value.ToString(), out int id_attribute);
+								string insert = "select * from ps_product";
+								string insert2 = "select * from ps_product";
+								if (worksheet.Cells[i, j].Value != null)
+								{
+									int.TryParse(worksheet.Cells[i, j].Value.ToString(), out int value);
+									insert = "INSERT INTO ps_conversion_attributes (id_conversion_group,id_attribute, value) VALUES (" + id_conversion_group + ", " + id_attribute + ", " + value + ")";
+									insert2 = "INSERT INTO ps_conversion_chart(id_conversion_chart,id_attribute_group, all_products, active, display_method, custom_img_url, type) VALUES (" + id_conversion_chart + "18, 0,1," + "inpage" + "," + "," + "regular" + ")";
+									mySqlCommand.CommandText = insert2;
+									progressBar1.Refresh();
+									try
+									{
+										mySqlCommand.ExecuteNonQuery();
+									}
+									catch (MySqlException ex)
+									{
+
+										ex.Message.ToString();
+									}
+
+								}
+								string insert3 = "INSERT INTO ps_conversion_chart_comments(id_chart, id_lang, chart_name) VALUES (" + id_conversion_chart + "," + "1" + worksheet.Cells[i, 1].Value.ToString() + ")";
+								mySqlCommand.CommandText = insert3;
+								progressBar1.Refresh();
+								try
+								{
+									mySqlCommand.ExecuteNonQuery();
+								}
+								catch (MySqlException ex)
+								{
+
+									ex.Message.ToString();
+								}
 								//MessageBox.Show(update);
 								mySqlCommand.CommandText = insert;
 								progressBar1.Refresh();
@@ -1047,7 +1274,7 @@ namespace cozabuty_data_updater
 									ex.Message.ToString();
 								}
 							}
-							}
+						}
 
 					}
 					nowe2.CloseConnection();
@@ -1060,6 +1287,290 @@ namespace cozabuty_data_updater
 			finally
 			{
 				progressBar1.MarqueeAnimationSpeed = 0;
+				MessageBox.Show("Zakończono operację");
+			}
+		}
+
+		private void button9_Click_1(object sender, EventArgs e)
+		{
+			try
+			{
+				progressBar1.MarqueeAnimationSpeed = 100;
+				OpenFileDialog openFileDialog = new OpenFileDialog();
+				openFileDialog.Filter = "Pliki excel (.xlsx)|*.xlsx|Wszystkie pliki (*.*)|*.*";
+				openFileDialog.FilterIndex = 1;
+				openFileDialog.Multiselect = false;
+				openFileDialog.ShowDialog();
+
+				if (openFileDialog.FileName == "")
+				{
+					MessageBox.Show("Nie wybrano pliku lub podano nieprawidłową nazwę");
+
+				}
+
+				else
+				{
+
+					FileInfo file = new FileInfo(@openFileDialog.FileName);
+					ExcelPackage package = new ExcelPackage(file);
+					ExcelWorksheet worksheet = package.Workbook.Worksheets[1];
+					int rows = worksheet.Dimension.Rows;
+					int columns = worksheet.Dimension.Columns;
+					ConnectDB nowe2 = new ConnectDB();
+					nowe2.OpenConnection();
+					MySqlCommand mySqlCommand = new MySqlCommand();
+					mySqlCommand.Connection = nowe2.conn;
+					for (int i = 2; i <= rows; i++)
+					{
+						progressBar1.Refresh();
+						if (worksheet.Cells[i, 1].Value != null)
+						{
+
+							//MessageBox.Show(update);
+							for (int j = 2; j < columns; j++)
+							{
+
+								int id_conversion_group = 0;
+								int id_conversion_chart = 0;
+								if (j <= 23)
+								{
+									id_conversion_group = 10 + i;
+									id_conversion_chart = 8 + i;
+									string inserti = "INSERT Into ps_conversion_groups(name, id_conversion_chart) VALUES (" + "Długość wkładki w której mieści się stopa średniej tęgości (cm)" + "," + id_conversion_chart + ")";
+									mySqlCommand.CommandText = inserti;
+									progressBar1.Refresh();
+									try
+									{
+										mySqlCommand.ExecuteNonQuery();
+									}
+									catch (MySqlException ex)
+									{
+
+										ex.Message.ToString();
+									}
+								}
+								else if (j < 32)
+								{
+									id_conversion_group = 11 + i;
+									id_conversion_chart = 8 + i;
+									string inserti = "INSERT Into ps_conversion_groups(name, id_conversion_chart) VALUES (" + "Obwód cholewki (cm)" + "," + id_conversion_chart + ")";
+									mySqlCommand.CommandText = inserti;
+									progressBar1.Refresh();
+									try
+									{
+										mySqlCommand.ExecuteNonQuery();
+									}
+									catch (MySqlException ex)
+									{
+
+										ex.Message.ToString();
+									}
+								}
+								else if (j < 39)
+								{
+									id_conversion_group = 12 + i;
+									id_conversion_chart = 8 + i;
+									string inserti = "INSERT Into ps_conversion_groups(name, id_conversion_chart) VALUES (" + "Wysokość cholewki (cm)" + "," + id_conversion_chart + ")";
+									mySqlCommand.CommandText = inserti;
+									progressBar1.Refresh();
+									try
+									{
+										mySqlCommand.ExecuteNonQuery();
+									}
+									catch (MySqlException ex)
+									{
+
+										ex.Message.ToString();
+									}
+								}
+								else if (j < 58)
+								{
+									id_conversion_group = 13 + i;
+									id_conversion_chart = 8 + i;
+									string inserti = "INSERT Into ps_conversion_groups(name, id_conversion_chart) VALUES (" + "Zmierzona długość wkładki wewnątrz buta (cm)" + "," + id_conversion_chart + ")";
+									mySqlCommand.CommandText = inserti;
+									progressBar1.Refresh();
+									try
+									{
+										mySqlCommand.ExecuteNonQuery();
+									}
+									catch (MySqlException ex)
+									{
+
+										ex.Message.ToString();
+									}
+								}
+								string insert3 = "INSERT INTO ps_conversion_chart_comments(id_chart, id_lang, chart_name) VALUES (" + id_conversion_chart + "," + "1" + worksheet.Cells[i, 1].Value.ToString() + ")";
+								mySqlCommand.CommandText = insert3;
+								progressBar1.Refresh();
+								try
+								{
+									mySqlCommand.ExecuteNonQuery();
+								}
+								catch (MySqlException ex)
+								{
+
+									ex.Message.ToString();
+								}
+								int.TryParse(worksheet.Cells[2, j].Value.ToString(), out int id_attribute);
+								string insert = "select * from ps_product";
+								string insert2 = "select * from ps_product";
+								if (worksheet.Cells[i, j].Value != null)
+								{
+									int.TryParse(worksheet.Cells[i, j].Value.ToString(), out int value);
+									insert = "INSERT INTO ps_conversion_attributes (id_conversion_group,id_attribute, value) VALUES (" + id_conversion_group + ", " + id_attribute + ", " + value + ")";
+									insert2 = "INSERT INTO ps_conversion_chart(id_conversion_chart,id_attribute_group, all_products, active, display_method, custom_img_url, type) VALUES (" + id_conversion_chart + "18, 0,1," + "inpage" + "," + "," + "regular" + ")";
+									mySqlCommand.CommandText = insert2;
+									progressBar1.Refresh();
+									try
+									{
+										mySqlCommand.ExecuteNonQuery();
+									}
+									catch (MySqlException ex)
+									{
+
+										ex.Message.ToString();
+									}
+
+								}
+
+
+							}
+						}
+
+					}
+					nowe2.CloseConnection();
+				}
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message);
+			}
+			finally
+			{
+				progressBar1.MarqueeAnimationSpeed = 0;
+				MessageBox.Show("Zakończono operację");
+			}
+		}
+
+		private void button10_Click(object sender, EventArgs e)
+		{
+			try
+			{
+
+				SaveFileDialog saveFileDialog = new SaveFileDialog();
+				saveFileDialog.Filter = "Pliki excela (*.xlsx)|*.xlsx";
+				saveFileDialog.FilterIndex = 0;
+				saveFileDialog.RestoreDirectory = true;
+				saveFileDialog.CreatePrompt = true;
+				saveFileDialog.Title = "Zapisz plik jako";
+				saveFileDialog.ShowDialog();
+
+				if (saveFileDialog.FileName != "")
+				{
+					ConnectDB prestaDB2 = new ConnectDB();
+
+					MySqlCommand tabSizes = new MySqlCommand();
+					tabSizes.Connection = prestaDB2.conn;
+					tabSizes.CommandText = "SELECT * FROM ps_tag";
+					prestaDB2.OpenConnection();
+					MySqlDataReader tSizes = tabSizes.ExecuteReader();
+
+					string[] Tags = new string[1000];
+
+					while (tSizes.Read())
+					{
+						int.TryParse(tSizes[0].ToString(), out int id_tagu);
+						string name = tSizes[2].ToString();
+						Tags[id_tagu] = name;
+					}
+					prestaDB2.CloseConnection();
+
+					ConnectDB prestaDB3 = new ConnectDB();
+
+					MySqlCommand produtyTagi = new MySqlCommand();
+					produtyTagi.Connection = prestaDB3.conn;
+					produtyTagi.CommandText = "SELECT * FROM ps_tag";
+					prestaDB3.OpenConnection();
+					MySqlDataReader produtyTagis = produtyTagi.ExecuteReader();
+
+					int[] TagsProducts = new int[100000];
+
+					while (produtyTagis.Read())
+					{
+						int.TryParse(produtyTagis[0].ToString(), out int id_produktu);
+						int.TryParse(produtyTagis[1].ToString(), out int id_tagu);
+						TagsProducts[id_produktu] = id_tagu;
+					}
+					prestaDB3.CloseConnection();
+
+					ConnectDB prestaDB4 = new ConnectDB();
+
+					MySqlCommand nazwy = new MySqlCommand();
+					nazwy.Connection = prestaDB4.conn;
+					nazwy.CommandText = "SELECT id_product, name FROM ps_product_lang Where id_shop = 1 and id_lang = 1";
+					prestaDB4.OpenConnection();
+					MySqlDataReader produtyNazwy = nazwy.ExecuteReader();
+
+					string[] produtyNazw = new string[100000];
+
+					while (produtyNazwy.Read())
+					{
+						int.TryParse(produtyNazwy[0].ToString(), out int id_produktu);
+						string name = produtyNazwy[1].ToString();
+						produtyNazw[id_produktu] = name;
+					}
+					prestaDB4.CloseConnection();
+
+					using (ExcelPackage excel = new ExcelPackage())
+					{
+						excel.Workbook.Worksheets.Add("Tagi");
+
+						var worksheet = excel.Workbook.Worksheets["Tagi"];
+						worksheet.Cells[2, 1].Value = "Id produktu";
+						worksheet.Cells[2, 2].Value = "Nazwa produktu";
+						for (int y = 3; y < 1000; y++)
+						{
+							if (Tags[y] != null)
+							{
+								worksheet.Cells[1, y].Value = y;
+								worksheet.Cells[2, y].Value = Tags[y];
+							}
+						}
+
+
+						for (int i = 3; i < 20000; i++)
+						{
+
+
+								if (TagsProducts[i] > 0)
+								{
+									worksheet.Cells[i, 1].Value = i;
+									worksheet.Cells[i, 2].Value = produtyNazw[i];
+									
+								}
+							
+						}
+
+						try
+						{
+							FileInfo excelFile = new FileInfo(saveFileDialog.FileName);
+							excel.SaveAs(excelFile);
+
+						}
+						catch (Exception ex)
+						{
+							MessageBox.Show(ex.Message);
+						}
+					}
+				}
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message);
+			}
+			finally
+			{
 				MessageBox.Show("Zakończono operację");
 			}
 		}
