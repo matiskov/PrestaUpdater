@@ -54,12 +54,14 @@ namespace cozabuty_data_updater
 					for (int i = 4; i <= rows; i++)
 					{
 						progressBar1.Refresh();
+						
+
 						for (int j = 16; j <= columns; j++)
 						{
 
-							if (worksheet.Cells[i, j].Value != null)
+							if (worksheet.Cells[i, j].Value != null && int.TryParse(worksheet.Cells[i, 1].Value.ToString(), out int wymiar1))
 							{
-								int.TryParse(worksheet.Cells[i, 1].Value.ToString(), out int wymiar1);
+								
 
 								if (worksheet.Cells[1, j].Value != null && int.TryParse(worksheet.Cells[1, j].Value.ToString(), out int wymiar2))
 								{
@@ -72,14 +74,16 @@ namespace cozabuty_data_updater
 
 									update = "Update ps_category_product SET position = " + priorytet + " WHERE id_product = " + wymiar1 + " and id_category = " + wymiar2;
 									mySqlCommand.CommandText = update;
-
+									//MessageBox.Show(update);
 									try
 									{
 										mySqlCommand.ExecuteNonQuery();
 									}
 									catch (MySqlException ex)
 									{
+
 										ex.Message.ToString();
+										
 									}
 								}
 							}
@@ -826,7 +830,9 @@ namespace cozabuty_data_updater
 				openFileDialog.FilterIndex = 1;
 				openFileDialog.Multiselect = false;
 				openFileDialog.ShowDialog();
-
+				if (comboBox2.SelectedItem == null) { 
+					throw new Exception("Nie wybrano akcji.");
+				}
 				if (openFileDialog.FileName == "")
 				{
 					MessageBox.Show("Nie wybrano pliku lub podano nieprawidłową nazwę");
@@ -835,6 +841,19 @@ namespace cozabuty_data_updater
 
 				else
 				{
+					ConnectDB connect1 = new ConnectDB();
+					MySqlCommand test123 = new MySqlCommand();
+					connect1.OpenConnection();
+					test123.Connection = connect1.conn;
+					test123.CommandText = "Select * from ps_feature_value";
+					MySqlDataReader test1234 = test123.ExecuteReader();
+					int[] test12345 = new int[100000];
+					while (test1234.Read()) {
+						int.TryParse(test1234[0].ToString(), out int id_value);
+						int.TryParse(test1234[1].ToString(), out int id_feature);
+						test12345[id_value] = id_feature;
+					}
+					connect1.CloseConnection();
 					ConnectDB connectDB = new ConnectDB();
 					MySqlCommand sqlCommand = new MySqlCommand();
 					connectDB.OpenConnection();
@@ -870,46 +889,60 @@ namespace cozabuty_data_updater
 								int.TryParse(worksheet.Cells[1, j].Value.ToString(), out int wymiar2);
 								int id_para = 0;
 								string content = worksheet.Cells[i, j].Value.ToString();
-								if (wymiar2 == 20)
-								{
-									for (int h = 1150; h < id_param.Length; h++)
-									{
-										if (content == id_param[h])
-										{
-											id_para = h;
-											break;
-										}
-									}
-								}
-								else if (wymiar2 == 16) {
-									for (int h = 1131; h < id_param.Length; h++)
-									{
-										if (content == id_param[h])
-										{
-											id_para = h;
-											break;
-										}
-									}
-								}
-								else
-								{
+								
+								
 									for (int h = 0; h < id_param.Length; h++)
 									{
-										if (content == id_param[h])
+										if (wymiar2 == test12345[h])
 										{
-											id_para = h;
-											break;
+											if (content == id_param[h])
+											{
+												id_para = h;
+												break;
+											}
 										}
 									}
-								}
+								
 								string update = "";
-								if (comboBox1.SelectedItem.ToString() == "Papier")
+								if (comboBox2.SelectedItem.ToString() == "Dodaj parametry")
 								{
 									update = "INSERT INTO ps_feature_product(id_feature_value,id_feature,id_product) VALUES (" + id_para + "," + wymiar2 + "," + wymiar1 + ")";
 								}
-								else
+								else if (comboBox2.SelectedItem.ToString() == "Aktualizuj parametry")
 								{
 									update = "UPDATE ps_feature_product SET id_feature_value = " + id_para + " WHERE id_feature = " + wymiar2 + " and id_product = " + wymiar1;
+								}
+								else if (comboBox2.SelectedItem.ToString() == "Dodaj, usuń lub aktualizuj parametry")
+								{
+									bool exist = false;
+									ConnectDB connect = new ConnectDB();
+									connect.OpenConnection();
+									MySqlCommand test = new MySqlCommand();
+									test.Connection = connect.conn;
+									test.CommandText = "Select * from ps_feature_product WHERE id_feature = " + wymiar2 + " and id_product = " + wymiar1;
+									//MessageBox.Show(test.CommandText);
+									MySqlDataReader readerlol = test.ExecuteReader();
+									while (readerlol.Read()){
+										exist = true;
+										
+									}
+									
+									connect.CloseConnection();
+									if (content == "0" && exist == true){
+										update = "DELETE FROM ps_feature_product WHERE id_feature = " + wymiar2 + " and id_product = " + wymiar1;
+									}
+									else if (exist == true)
+									{
+										update = "UPDATE ps_feature_product SET id_feature_value = " + id_para + " WHERE id_feature = " + wymiar2 + " and id_product = " + wymiar1;
+									}
+									else if (exist == false)
+									{
+										update = "INSERT INTO ps_feature_product(id_feature_value,id_feature,id_product) VALUES (" + id_para + "," + wymiar2 + "," + wymiar1 + ")";
+									}
+								}
+								else if(comboBox2.SelectedItem.ToString() == "Usuń parametry")
+								{
+									update = "DELETE FROM ps_feature_product WHERE id_feature = " + wymiar2 + " and id_product = " + wymiar1;
 								}
 								//MessageBox.Show(update);
 								mySqlCommand.CommandText = update;
@@ -920,8 +953,11 @@ namespace cozabuty_data_updater
 								}
 								catch (MySqlException ex)
 								{
-
-									ex.Message.ToString();
+									using (StreamWriter sw = new StreamWriter("log_params.txt"))
+									{
+										sw.WriteLine(ex.Message.ToString());
+									}
+									
 								}
 							}
 						}
@@ -1054,6 +1090,7 @@ namespace cozabuty_data_updater
 					ExcelPackage package = new ExcelPackage(file);
 					ExcelWorksheet worksheet = package.Workbook.Worksheets[1];
 					int rows = worksheet.Dimension.Rows;
+					MessageBox.Show(rows.ToString());
 					int columns = worksheet.Dimension.Columns;
 					ConnectDB nowe2 = new ConnectDB();
 					nowe2.OpenConnection();
@@ -1078,30 +1115,40 @@ namespace cozabuty_data_updater
 								{
 									insert = "INSERT INTO ps_accessory(id_product_1, id_product_2) VALUES(" + id_prod + ", " + id_prod_2 + ")";
 									select = "SELECT * from ps_accessory WHERE id_product_1 = " + id_prod + " and id_product_2 = " + id_prod_2;
-								}
-								mySqlCommand.CommandText = select;
-								MySqlDataReader reader = mySqlCommand.ExecuteReader();
-								bool result = false;
-								if (reader.Read()) {
-									result = true;
-									//MessageBox.Show(reader[0].ToString());
-								}
-								reader.Close();
-								try
-								{
-									if (result == false)
-								{
-										//MessageBox.Show("Dodaję...");
-										mySqlCommand.CommandText = insert;
-										progressBar1.Refresh();
-										mySqlCommand.ExecuteNonQuery();
-									}
-									
-								}
-								catch (MySqlException ex)
-								{
 
-									MessageBox.Show(ex.Message.ToString());
+									mySqlCommand.CommandText = select;
+									MySqlDataReader reader = mySqlCommand.ExecuteReader();
+									bool result = false;
+									if (reader.Read())
+									{
+										result = true;
+										//MessageBox.Show(reader[0].ToString());
+									}
+									reader.Close();
+									try
+									{
+										if (result == false)
+										{
+											using (StreamWriter sw = new StreamWriter("logs.txt"))
+											{
+												sw.WriteLine(insert);
+											}
+											//MessageBox.Show("Dodaję...");
+											mySqlCommand.CommandText = insert;
+											progressBar1.Refresh();
+											mySqlCommand.ExecuteNonQuery();
+										}
+
+									}
+									catch (MySqlException ex)
+									{
+
+										MessageBox.Show(ex.Message.ToString());
+									}
+									using (StreamWriter sw = new StreamWriter("logs.txt"))
+									{
+										sw.WriteLine(id_prod + "," + id_prod_2);
+									}
 								}
 							}
 						}
@@ -1465,7 +1512,7 @@ namespace cozabuty_data_updater
 				saveFileDialog.CreatePrompt = true;
 				saveFileDialog.Title = "Zapisz plik jako";
 				saveFileDialog.ShowDialog();
-
+			
 				if (saveFileDialog.FileName != "")
 				{
 					ConnectDB prestaDB2 = new ConnectDB();
@@ -1574,5 +1621,7 @@ namespace cozabuty_data_updater
 				MessageBox.Show("Zakończono operację");
 			}
 		}
+
+
 	}
 }
