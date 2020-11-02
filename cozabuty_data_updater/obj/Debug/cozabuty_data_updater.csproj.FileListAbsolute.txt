@@ -61,3 +61,47 @@ C:\Users\user\Desktop\Nowy folder (3)\PrestaUpdater\cozabuty_data_updater\obj\De
 C:\Users\user\Desktop\Nowy folder (3)\PrestaUpdater\cozabuty_data_updater\obj\Debug\cozabuty_data_updater.csproj.CopyComplete
 C:\Users\user\Desktop\Nowy folder (3)\PrestaUpdater\cozabuty_data_updater\obj\Debug\cozabuty_data_updater.exe
 C:\Users\user\Desktop\Nowy folder (3)\PrestaUpdater\cozabuty_data_updater\obj\Debug\cozabuty_data_updater.pdb
+D:\git\PrestaUpdater\cozabuty_data_updater\bin\Debug\cozabuty_data_updater.exe.config
+D:\git\PrestaUpdater\cozabuty_data_updater\bin\Debug\cozabuty_data_updater.exe
+D:\git\PrestaUpdater\cozabuty_data_updater\bin\Debug\cozabuty_data_updater.pdb
+D:\git\PrestaUpdater\cozabuty_data_updater\bin\Debug\BouncyCastle.Crypto.dll
+D:\git\PrestaUpdater\cozabuty_data_updater\bin\Debug\EPPlus.dll
+D:\git\PrestaUpdater\cozabuty_data_updater\bin\Debug\Google.Protobuf.dll
+D:\git\PrestaUpdater\cozabuty_data_updater\bin\Debug\MySql.Data.dll
+D:\git\PrestaUpdater\cozabuty_data_updater\bin\Debug\Renci.SshNet.dll
+D:\git\PrestaUpdater\cozabuty_data_updater\bin\Debug\Ubiety.Dns.Core.dll
+D:\git\PrestaUpdater\cozabuty_data_updater\bin\Debug\EPPlus.xml
+D:\git\PrestaUpdater\cozabuty_data_updater\bin\Debug\Google.Protobuf.xml
+D:\git\PrestaUpdater\cozabuty_data_updater\bin\Debug\MySql.Data.xml
+D:\git\PrestaUpdater\cozabuty_data_updater\bin\Debug\Renci.SshNet.xml
+D:\git\PrestaUpdater\cozabuty_data_updater\obj\Debug\cozabuty_data_updater.csprojAssemblyReference.cache
+D:\git\PrestaUpdater\cozabuty_data_updater\obj\Debug\cozabuty_data_updater.Form1.resources
+D:\git\PrestaUpdater\cozabuty_data_updater\obj\Debug\cozabuty_data_updater.Form2.resources
+D:\git\PrestaUpdater\cozabuty_data_updater\obj\Debug\cozabuty_data_updater.Properties.Resources.resources
+D:\git\PrestaUpdater\cozabuty_data_updater\obj\Debug\cozabuty_data_updater.csproj.GenerateResource.cache
+D:\git\PrestaUpdater\cozabuty_data_updater\obj\Debug\cozabuty_data_updater.csproj.CoreCompileInputs.cache
+D:\git\PrestaUpdater\cozabuty_data_updater\obj\Debug\cozabuty_data_updater.csproj.CopyComplete
+D:\git\PrestaUpdater\cozabuty_data_updater\obj\Debug\cozabuty_data_updater.exe
+D:\git\PrestaUpdater\cozabuty_data_updater\obj\Debug\cozabuty_data_updater.pdb
+E:\git\PrestaUpdater\cozabuty_data_updater\bin\Debug\cozabuty_data_updater.exe.config
+E:\git\PrestaUpdater\cozabuty_data_updater\bin\Debug\cozabuty_data_updater.exe
+E:\git\PrestaUpdater\cozabuty_data_updater\bin\Debug\cozabuty_data_updater.pdb
+E:\git\PrestaUpdater\cozabuty_data_updater\bin\Debug\BouncyCastle.Crypto.dll
+E:\git\PrestaUpdater\cozabuty_data_updater\bin\Debug\EPPlus.dll
+E:\git\PrestaUpdater\cozabuty_data_updater\bin\Debug\Google.Protobuf.dll
+E:\git\PrestaUpdater\cozabuty_data_updater\bin\Debug\MySql.Data.dll
+E:\git\PrestaUpdater\cozabuty_data_updater\bin\Debug\Renci.SshNet.dll
+E:\git\PrestaUpdater\cozabuty_data_updater\bin\Debug\Ubiety.Dns.Core.dll
+E:\git\PrestaUpdater\cozabuty_data_updater\bin\Debug\EPPlus.xml
+E:\git\PrestaUpdater\cozabuty_data_updater\bin\Debug\Google.Protobuf.xml
+E:\git\PrestaUpdater\cozabuty_data_updater\bin\Debug\MySql.Data.xml
+E:\git\PrestaUpdater\cozabuty_data_updater\bin\Debug\Renci.SshNet.xml
+E:\git\PrestaUpdater\cozabuty_data_updater\obj\Debug\cozabuty_data_updater.csprojAssemblyReference.cache
+E:\git\PrestaUpdater\cozabuty_data_updater\obj\Debug\cozabuty_data_updater.Form1.resources
+E:\git\PrestaUpdater\cozabuty_data_updater\obj\Debug\cozabuty_data_updater.Form2.resources
+E:\git\PrestaUpdater\cozabuty_data_updater\obj\Debug\cozabuty_data_updater.Properties.Resources.resources
+E:\git\PrestaUpdater\cozabuty_data_updater\obj\Debug\cozabuty_data_updater.csproj.GenerateResource.cache
+E:\git\PrestaUpdater\cozabuty_data_updater\obj\Debug\cozabuty_data_updater.csproj.CoreCompileInputs.cache
+E:\git\PrestaUpdater\cozabuty_data_updater\obj\Debug\cozabuty_data_updater.csproj.CopyComplete
+E:\git\PrestaUpdater\cozabuty_data_updater\obj\Debug\cozabuty_data_updater.exe
+E:\git\PrestaUpdater\cozabuty_data_updater\obj\Debug\cozabuty_data_updater.pdb

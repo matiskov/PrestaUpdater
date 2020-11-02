@@ -308,6 +308,14 @@ namespace cozabuty_data_updater
 									worksheet2.Cells[2, z].Value = "Buty damskie";
 
 								}
+								else if (index < 161)
+								{
+									worksheet.Cells[2, z].Value = "W panelu";
+									worksheet.Cells[3, z].Value = tabsa[index];
+									worksheet2.Cells[3, z].Value = tabsa[index];
+									worksheet2.Cells[2, z].Value = "W panelu";
+
+								}
 								else if (index < 196)
 								{
 									worksheet.Cells[2, z].Value = "Wyprzedaz";
@@ -410,6 +418,13 @@ namespace cozabuty_data_updater
 								int.TryParse(b.GetIdCategory(), out int test1);
 								if (test1 > 9 && test1 < 96)
 								{
+									worksheet.Cells[1, z].Value = b.GetIdCategory();
+									worksheet.Cells[4, z].Value = b.GetNameCategory();
+									worksheet2.Cells[1, z].Value = b.GetIdCategory();
+									worksheet2.Cells[4, z].Value = b.GetNameCategory();
+									z++;
+								}
+								else if (checkBox1.Checked && test1 >= 96 && test1 < 161) {
 									worksheet.Cells[1, z].Value = b.GetIdCategory();
 									worksheet.Cells[4, z].Value = b.GetNameCategory();
 									worksheet2.Cells[1, z].Value = b.GetIdCategory();
@@ -1622,6 +1637,9 @@ namespace cozabuty_data_updater
 			}
 		}
 
+		private void checkBox1_CheckedChanged(object sender, EventArgs e)
+		{
 
+		}
 	}
 }

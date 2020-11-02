@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="0c67ec62-2bd9-4b26-8797-1aa491ff4d32" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../../.vs/cozabuty_data_updater/v16/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/../../.vs/cozabuty_data_updater/v16/.suo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Form1.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Form1.Designer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Form1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Form1.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Debug/cozabuty_data_updater.exe" beforeDir="false" afterPath="$PROJECT_DIR$/Debug/cozabuty_data_updater.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Debug/cozabuty_data_updater.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Debug/cozabuty_data_updater.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Release/cozabuty_data_updater.exe" beforeDir="false" afterPath="$PROJECT_DIR$/Release/cozabuty_data_updater.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Release/cozabuty_data_updater.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Release/cozabuty_data_updater.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../obj/Debug/cozabuty_data_updater.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../obj/Debug/cozabuty_data_updater.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../obj/Debug/cozabuty_data_updater.csproj.GenerateResource.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../obj/Debug/cozabuty_data_updater.csproj.GenerateResource.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../obj/Debug/cozabuty_data_updater.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../obj/Debug/cozabuty_data_updater.csprojAssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../obj/Debug/cozabuty_data_updater.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../obj/Debug/cozabuty_data_updater.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../obj/Debug/cozabuty_data_updater.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../obj/Debug/cozabuty_data_updater.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../obj/Release/cozabuty_data_updater.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../obj/Release/cozabuty_data_updater.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../obj/Release/cozabuty_data_updater.csproj.GenerateResource.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../obj/Release/cozabuty_data_updater.csproj.GenerateResource.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../obj/Release/cozabuty_data_updater.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../obj/Release/cozabuty_data_updater.csprojAssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../obj/Release/cozabuty_data_updater.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../obj/Release/cozabuty_data_updater.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../obj/Release/cozabuty_data_updater.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../obj/Release/cozabuty_data_updater.pdb" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="ProjectId" id="1jVOxfeUdXRwI7RLw3ciZQgbjzz" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0c67ec62-2bd9-4b26-8797-1aa491ff4d32" name="Default Changelist" comment="" />
+      <created>1603886057429</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1603886057429</updated>
+      <workItem from="1603886063415" duration="4000" />
+    </task>
+    <servers />
+  </component>
+</project>

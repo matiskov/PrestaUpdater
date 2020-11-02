@@ -49,6 +49,7 @@
 			this.button11 = new System.Windows.Forms.Button();
 			this.comboBox2 = new System.Windows.Forms.ComboBox();
 			this.label2 = new System.Windows.Forms.Label();
+			this.checkBox1 = new System.Windows.Forms.CheckBox();
 			this.menuStrip1.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -74,7 +75,7 @@
 			// 
 			// button3
 			// 
-			this.button3.Location = new System.Drawing.Point(12, 237);
+			this.button3.Location = new System.Drawing.Point(12, 258);
 			this.button3.Name = "button3";
 			this.button3.Size = new System.Drawing.Size(214, 55);
 			this.button3.TabIndex = 2;
@@ -246,11 +247,23 @@
 			this.label2.TabIndex = 19;
 			this.label2.Text = "Wybierz co chcesz zrobić z parametrami";
 			// 
+			// checkBox1
+			// 
+			this.checkBox1.AutoSize = true;
+			this.checkBox1.Location = new System.Drawing.Point(12, 237);
+			this.checkBox1.Name = "checkBox1";
+			this.checkBox1.Size = new System.Drawing.Size(218, 17);
+			this.checkBox1.TabIndex = 20;
+			this.checkBox1.Text = "Zaznacz aby pobrać wszystkie kategorie";
+			this.checkBox1.UseVisualStyleBackColor = true;
+			this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(953, 314);
+			this.Controls.Add(this.checkBox1);
 			this.Controls.Add(this.label2);
 			this.Controls.Add(this.comboBox2);
 			this.Controls.Add(this.button11);
@@ -305,6 +318,7 @@
 		private System.Windows.Forms.Button button11;
 		private System.Windows.Forms.ComboBox comboBox2;
 		private System.Windows.Forms.Label label2;
+		private System.Windows.Forms.CheckBox checkBox1;
 	}
 }
 

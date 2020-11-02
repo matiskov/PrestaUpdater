@@ -40,3 +40,25 @@ C:\Users\user\Desktop\Nowy folder (3)\PrestaUpdater\cozabuty_data_updater\obj\Re
 C:\Users\user\Desktop\Nowy folder (3)\PrestaUpdater\cozabuty_data_updater\obj\Release\cozabuty_data_updater.csproj.CopyComplete
 C:\Users\user\Desktop\Nowy folder (3)\PrestaUpdater\cozabuty_data_updater\obj\Release\cozabuty_data_updater.exe
 C:\Users\user\Desktop\Nowy folder (3)\PrestaUpdater\cozabuty_data_updater\obj\Release\cozabuty_data_updater.pdb
+D:\git\PrestaUpdater\cozabuty_data_updater\bin\Release\cozabuty_data_updater.exe.config
+D:\git\PrestaUpdater\cozabuty_data_updater\bin\Release\cozabuty_data_updater.exe
+D:\git\PrestaUpdater\cozabuty_data_updater\bin\Release\cozabuty_data_updater.pdb
+D:\git\PrestaUpdater\cozabuty_data_updater\bin\Release\BouncyCastle.Crypto.dll
+D:\git\PrestaUpdater\cozabuty_data_updater\bin\Release\EPPlus.dll
+D:\git\PrestaUpdater\cozabuty_data_updater\bin\Release\Google.Protobuf.dll
+D:\git\PrestaUpdater\cozabuty_data_updater\bin\Release\MySql.Data.dll
+D:\git\PrestaUpdater\cozabuty_data_updater\bin\Release\Renci.SshNet.dll
+D:\git\PrestaUpdater\cozabuty_data_updater\bin\Release\Ubiety.Dns.Core.dll
+D:\git\PrestaUpdater\cozabuty_data_updater\bin\Release\EPPlus.xml
+D:\git\PrestaUpdater\cozabuty_data_updater\bin\Release\Google.Protobuf.xml
+D:\git\PrestaUpdater\cozabuty_data_updater\bin\Release\MySql.Data.xml
+D:\git\PrestaUpdater\cozabuty_data_updater\bin\Release\Renci.SshNet.xml
+D:\git\PrestaUpdater\cozabuty_data_updater\obj\Release\cozabuty_data_updater.csprojAssemblyReference.cache
+D:\git\PrestaUpdater\cozabuty_data_updater\obj\Release\cozabuty_data_updater.Form1.resources
+D:\git\PrestaUpdater\cozabuty_data_updater\obj\Release\cozabuty_data_updater.Form2.resources
+D:\git\PrestaUpdater\cozabuty_data_updater\obj\Release\cozabuty_data_updater.Properties.Resources.resources
+D:\git\PrestaUpdater\cozabuty_data_updater\obj\Release\cozabuty_data_updater.csproj.GenerateResource.cache
+D:\git\PrestaUpdater\cozabuty_data_updater\obj\Release\cozabuty_data_updater.csproj.CoreCompileInputs.cache
+D:\git\PrestaUpdater\cozabuty_data_updater\obj\Release\cozabuty_data_updater.csproj.CopyComplete
+D:\git\PrestaUpdater\cozabuty_data_updater\obj\Release\cozabuty_data_updater.exe
+D:\git\PrestaUpdater\cozabuty_data_updater\obj\Release\cozabuty_data_updater.pdb
