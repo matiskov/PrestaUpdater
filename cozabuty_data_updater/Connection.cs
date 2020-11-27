@@ -43,7 +43,7 @@ namespace cozabuty_data_updater
 						}
 						if (i == 4)
 						{
-							connString += "password=" + line + ";";
+							connString += "password=" + StringUtil.Decrypt(line) + ";";
 						}
 						i++;
 					}

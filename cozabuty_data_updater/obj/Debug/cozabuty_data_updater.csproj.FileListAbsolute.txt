@@ -105,3 +105,7 @@ E:\git\PrestaUpdater\cozabuty_data_updater\obj\Debug\cozabuty_data_updater.cspro
 E:\git\PrestaUpdater\cozabuty_data_updater\obj\Debug\cozabuty_data_updater.csproj.CopyComplete
 E:\git\PrestaUpdater\cozabuty_data_updater\obj\Debug\cozabuty_data_updater.exe
 E:\git\PrestaUpdater\cozabuty_data_updater\obj\Debug\cozabuty_data_updater.pdb
+D:\git\PrestaUpdater\cozabuty_data_updater\bin\Debug\Microsoft.AspNetCore.Cryptography.Internal.dll
+D:\git\PrestaUpdater\cozabuty_data_updater\bin\Debug\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+D:\git\PrestaUpdater\cozabuty_data_updater\bin\Debug\Microsoft.AspNetCore.Cryptography.Internal.xml
+D:\git\PrestaUpdater\cozabuty_data_updater\bin\Debug\Microsoft.AspNetCore.Cryptography.KeyDerivation.xml

@@ -8,12 +8,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Security.Cryptography;
+
 namespace cozabuty_data_updater
 {
+	
 	public partial class Form2 : Form
 	{
-		public Form2()
+
+	public Form2()
 		{
+
 			InitializeComponent();
 			try
 			{
@@ -41,7 +46,7 @@ namespace cozabuty_data_updater
 						}
 						if (i == 4)
 						{
-							pass.Text = line;
+							pass.Text = StringUtil.Decrypt(line);
 						}
 						i++;
 					}
@@ -68,9 +73,14 @@ namespace cozabuty_data_updater
 				sw.WriteLine(user.Text);
 				sw.WriteLine(dbName.Text);
 				sw.WriteLine(port.Text);
-				sw.WriteLine(pass.Text);
+				sw.WriteLine(StringUtil.Crypt(pass.Text));
 			}
 			Close();
 		}
-	}
+
+        private void Form2_Load(object sender, EventArgs e)
+        {
+
+        }
+    }
 }

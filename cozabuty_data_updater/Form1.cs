@@ -595,6 +595,11 @@ namespace cozabuty_data_updater
 				MessageBox.Show(ex.Message);
 				MessageBox.Show("Zakończono operację");
 			}
+			finally
+			{
+				progressBar1.MarqueeAnimationSpeed = 0;
+				MessageBox.Show("Zakończono operację");
+			}
 		}
 		private void daneSerweraToolStripMenuItem_Click(object sender, EventArgs e)
 		{
@@ -1638,6 +1643,11 @@ namespace cozabuty_data_updater
 		}
 
 		private void checkBox1_CheckedChanged(object sender, EventArgs e)
+		{
+
+		}
+
+		private void Form1_Load(object sender, EventArgs e)
 		{
 
 		}
