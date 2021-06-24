@@ -152,18 +152,18 @@ namespace cozabuty_data_updater
 						categoryDownload.Connection = prestaDB.conn;
 						if (comboBox1.SelectedItem.ToString() == "Buty")
 						{
-							categoryDownload.CommandText = "SELECT ps_category_product.id_category, id_product, ps_category_product.position,name,id_parent FROM ps_category_product inner join ps_category_lang on ps_category_product.id_category = ps_category_lang.id_category inner join ps_category on ps_category_product.id_category = ps_category.id_category WHERE id_lang = 1 and id_shop = 1 and id_shop_default = 1 group by id_category";
-							towary = "SELECT * from produkty_z_id inner join stany on produkty_z_id.id_product = stany.id where stany > 0 and id_shop_default = 1";
+							categoryDownload.CommandText = "SELECT ps_category_product.id_category, id_product, ps_category_product.position,name,id_parent FROM ps_category_product inner join ps_category_lang on ps_category_product.id_category = ps_category_lang.id_category inner join ps_category on ps_category_product.id_category = ps_category.id_category WHERE id_lang = 1 and id_shop = 1 and id_shop_default = 1 group by id_category order by id_category";
+							towary = "SELECT * from produkty_z_id inner join stany on produkty_z_id.id_product = stany.id where stany > 0";
 						}
 						else if (comboBox1.SelectedItem.ToString() == "Papier")
 						{
-							categoryDownload.CommandText = "SELECT ps_category_product.id_category, id_product, ps_category_product.position,name,id_parent FROM ps_category_product inner join ps_category_lang on ps_category_product.id_category = ps_category_lang.id_category inner join ps_category on ps_category_product.id_category = ps_category.id_category WHERE id_lang = 1 and id_shop = 1 and id_shop_default = 4 group by id_category";
+							categoryDownload.CommandText = "SELECT ps_category_product.id_category, id_product, ps_category_product.position,name,id_parent FROM ps_category_product inner join ps_category_lang on ps_category_product.id_category = ps_category_lang.id_category inner join ps_category on ps_category_product.id_category = ps_category.id_category WHERE id_lang = 1 and id_shop = 1 and id_shop_default = 4 group by id_category order by id_category";
 							towary = "SELECT * from produkty_z_id inner join stany on produkty_z_id.id_product = stany.id where stany > 0 and id_shop_default = 4";
 
 						}
 						else if (comboBox1.SelectedItem.ToString() == "Folwark")
 						{
-							categoryDownload.CommandText = "SELECT ps_category_product.id_category, id_product, ps_category_product.position,name,id_parent FROM ps_category_product inner join ps_category_lang on ps_category_product.id_category = ps_category_lang.id_category inner join ps_category on ps_category_product.id_category = ps_category.id_category WHERE id_lang = 1 and id_shop = 1 and id_shop_default = 3 group by id_category";
+							categoryDownload.CommandText = "SELECT ps_category_product.id_category, id_product, ps_category_product.position,name,id_parent FROM ps_category_product inner join ps_category_lang on ps_category_product.id_category = ps_category_lang.id_category inner join ps_category on ps_category_product.id_category = ps_category.id_category WHERE id_lang = 1 and id_shop = 1 and id_shop_default = 3 group by id_category order by id_category";
 							towary = "SELECT * from produkty_z_id inner join stany on produkty_z_id.id_product = stany.id where stany > 0 and id_shop_default = 3";
 
 						}
@@ -185,7 +185,7 @@ namespace cozabuty_data_updater
 						priotyt.OpenConnection();
 						MySqlCommand mySqlCommand = new MySqlCommand();
 						mySqlCommand.Connection = priotyt.conn;
-						mySqlCommand.CommandText = "SELECT ps_category_product.id_category, id_product, ps_category_product.position,name,id_parent FROM ps_category_product inner join ps_category_lang on ps_category_product.id_category = ps_category_lang.id_category inner join ps_category on ps_category_product.id_category = ps_category.id_category WHERE id_lang = 1 and id_shop = 1";
+						mySqlCommand.CommandText = "SELECT ps_category_product.id_category, id_product, ps_category_product.position,name,id_parent FROM ps_category_product inner join ps_category_lang on ps_category_product.id_category = ps_category_lang.id_category inner join ps_category on ps_category_product.id_category = ps_category.id_category WHERE id_lang = 1 and id_shop = 1 order by id_category";
 						string[,] products_priories = new string[proSize + 1000, 3000];
 						MySqlDataReader read = mySqlCommand.ExecuteReader();
 
